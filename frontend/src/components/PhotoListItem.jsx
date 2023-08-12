@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import "../styles/PhotoListItem.scss";
 import FavIcon from "./FavIcon";
 import "../styles/FavBadge.scss";
+import "../styles/PhotoList.scss"
+
 
 
 
@@ -10,30 +12,37 @@ import "../styles/FavBadge.scss";
 
 const PhotoListItem = (props) => {
   /* Insert React */
-  const { location, username, profile, imageSource } = props.data;
+  const { id, location, urls, user } = props.data;
   const [likes, setCounter] = useState(0);
-  const [click, setClick] = useState(false);
+  // const [favList, updateFavList] = useState({});
+  // const [id, saveId] = useState(0);
+//  const [click, setClick] = useState(false);
   const increment = function() {
     setCounter(likes + 1);
   };
 
-  const handleClicks = function() {
-    console.log("I am here")
-    setClick(prevClick => !prevClick);
+  // const handleClicks = function() {
+  //   console.log("inside handle clicks")
+  //   console.log(id);
+  //   setClick(prevClick => !prevClick);
+  //   //updateFavList(favList.push(id));
+  //   updateFavList({...favList, [id]:!!favList[id]});
+  //   console.log(favList);
     
-  };
+  // };
+  
 
 
   return (
     
     <div className="photo-list__item">
-      <div  className="fav-badge" onClick={handleClicks}><span><FavIcon selected={click}/></span></div>
-    <img className="photo-list__image" src={imageSource} />
+      <div  className="fav-badge" onClick={() => props.handleClicks(id)}><span><FavIcon selected={props.favList[id]}/></span></div>
+    <img className="photo-list__image" src={urls.regular} />
     
     <div className="photo-list__bottomLine">
-      <img className="photo-list__user-profile" src={profile} />
+      <img className="photo-list__user-profile" src={user.profile} />
       <div className="photo-list__user-details">  
-      <span className="photo-list__user-info">{username}</span>
+      <span className="photo-list__user-info">{user.name}</span>
       <div className="photo-list__user-location">
         <span>{location.city} </span>
         <span>{location.country}</span>
@@ -41,7 +50,6 @@ const PhotoListItem = (props) => {
       {likes}
       <button onClick={increment}>+</button>
       
-     
     </div>
     </div>
     
