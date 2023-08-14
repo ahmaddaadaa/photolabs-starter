@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "../styles/PhotoListItem.scss";
 import FavIcon from "./FavIcon";
 import "../styles/FavBadge.scss";
 import "../styles/PhotoList.scss"
+import FavButton from "./FavButton";
+
 
 
 
@@ -14,30 +16,36 @@ const PhotoListItem = (props) => {
   /* Insert React */
   const { id, location, urls, user } = props.data;
   const [likes, setCounter] = useState(0);
-  // const [favList, updateFavList] = useState({});
-  // const [id, saveId] = useState(0);
-//  const [click, setClick] = useState(false);
+
   const increment = function() {
     setCounter(likes + 1);
   };
+  const [popUpwindowStatus, setpopUpwindowStatus] = useState(true);
 
-  // const handleClicks = function() {
-  //   console.log("inside handle clicks")
-  //   console.log(id);
-  //   setClick(prevClick => !prevClick);
-  //   //updateFavList(favList.push(id));
-  //   updateFavList({...favList, [id]:!!favList[id]});
-  //   console.log(favList);
-    
-  // };
+  const handleImageClicks = function() {
+    console.log("handleImageClick is called with id", id);
+    console.log("selectedphoto", props.data);
+    setpopUpwindowStatus(popUpwindowStatus)
+    props.sendDataToPhotoList(popUpwindowStatus);
+    props.sendSelectedPhotoDeatil(props.data);
+
+  }
+   
+  const handleFavClick = () => {
+    props.handleClicks(id);
+  };
+
   
 
 
   return (
     
     <div className="photo-list__item">
-      <div  className="fav-badge" onClick={() => props.handleClicks(id)}><span><FavIcon selected={props.favList[id]}/></span></div>
-    <img className="photo-list__image" src={urls.regular} />
+
+      {/* <div  className="fav-badge" onClick={() => props.handleClicks(id)}><span><FavIcon selected={props.favList[id]}/></span></div> */}
+      <FavButton selected={props.favList[id]} onClick={handleFavClick} />
+
+    <img className="photo-list__image" src={urls.regular} onClick={handleImageClicks}/>
     
     <div className="photo-list__bottomLine">
       <img className="photo-list__user-profile" src={user.profile} />
@@ -54,7 +62,8 @@ const PhotoListItem = (props) => {
     </div>
     
     
-  </div>);
+  </div>
+  );
 };
 
 export default PhotoListItem;

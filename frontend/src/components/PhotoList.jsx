@@ -6,11 +6,32 @@ import photos from "mocks/photos";
 
 
 const PhotoList = (props) => {
+  const [receivedDataFromPhotoListItem, setReceivedDataFromPhotoListItem] = useState(null);
+  const [receivedObjFromPhotoListItem, setReceivedObjFromPhotoListItem] = useState({});
 
+  // Callback function to receive data from the PhotoListItem
+  const handleDataFromPhotoListItem = (data) => {
+    setReceivedDataFromPhotoListItem(data);
+    props.sendDataToHomeRoute(data);
+  };
+  const handleSelectedPhotoDataFromPhotoListItem = (data) => {
+    setReceivedObjFromPhotoListItem(data);
+    props.sendObjToHomeRoute(data);
+  };
+
+  
+  
   return (
     <ul className="photo-list">
-       {photos.map((photo_obj) => (
-        <PhotoListItem key={photo_obj.id} data={photo_obj} handleClicks={props.handleClicks} favList={props.favList}/>
+        {photos.map((photo_obj) => (
+          <PhotoListItem 
+          key={photo_obj.id} 
+          data={photo_obj} 
+          handleClicks={props.handleClicks} 
+          favList={props.favList} 
+          sendDataToPhotoList={handleDataFromPhotoListItem}
+          sendSelectedPhotoDeatil={handleSelectedPhotoDataFromPhotoListItem}
+       />
       ))}
     </ul>
   );
