@@ -3,17 +3,10 @@ import FavIcon from "./FavIcon";
 import "../styles/FavBadge.scss";
 
 const FavButton = ({ selected, onClick }) => {
-  const [isSelected, setIsSelected] = useState(selected);
-
-  const handleClick = () => {
-    setIsSelected(!isSelected);
-    onClick(!isSelected);
-  };
-
   return (
-    <div className="fav-badge" onClick={handleClick}>
+    <div className="fav-badge" onClick={onClick}>
       <span>
-        <FavIcon selected={isSelected} />
+        <FavIcon selected={selected} />
       </span>
     </div>
   );
