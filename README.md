@@ -1,3 +1,8 @@
+## Updated version:
+***
+!["app functionality"](https://github.com/ahmaddaadaa/photolabs-starter/blob/master/docs/display.png?raw=true)
+***
+
 # react-photolabs
 The PhotoLabs project for the Web Development React course programming.
 
