@@ -1,7 +1,8 @@
 ## Updated version:
 ***
-!["app functionality"](https://github.com/ahmaddaadaa/photolabs-starter/tree/main/docs/display.gif?raw=true)
+![App Functionality](https://github.com/ahmaddaadaa/photolabs-starter/raw/main/docs/display.gif)
 ***
+
 
 # react-photolabs
 The PhotoLabs project for the Web Development React course programming.
