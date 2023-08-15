@@ -1,16 +1,38 @@
-import React, { useState } from 'react';
-
-
-import PhotoListItem from './components/PhotoListItem';
+import React, { useReducer, useState } from "react";
 import './App.scss';
-import PhotoList from 'components/PhotoList';
-import TopicList from 'components/TopicList';
-import TopNavigationBar from 'components/TopNavigationBar';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import useFavList from "hooks/useFavList";
+
+const favListReducer = (state, action) => {
+  switch (action.type) {
+    case "ADD":
+      if (!state.includes(action.id)) {
+        return [...state, action.id];
+      }
+      return state;
+    case "REMOVE":
+      return state.filter((id) => id !== action.id);
+    default:
+      return state;
+  }
+};
 
 const App = () => {
-  // console.log("props in the App", props);
+  
+  //const { favList, updateToFavPhotoIds } = useFavList();
+
+  const [favList, dispatchFavList] = useReducer(favListReducer, []);
+
+  const updateFavList = function (id) {
+    if (favList.includes(id)) {
+      dispatchFavList({ type: "REMOVE", id });
+    } else {
+      dispatchFavList({ type: "ADD", id });
+    }
+  };
+
+
   const [receivedData, setReceivedData] = useState(null);
   const [receivedObj, setReceivedObj] = useState({
     "id": "7",
@@ -29,6 +51,7 @@ const App = () => {
       "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
     }
   });
+
    // Callback function to receive data from the HomeRoute
    const handleDataFromHomeRoute = (data) => {
     setReceivedData(data);
@@ -40,25 +63,22 @@ const App = () => {
     setReceivedObj(data);
   };
 
-  const [dataFromModal, setDataFromModal] = useState(null);
-  console.log("Data received from PhotoDetailsModal:", dataFromModal);
-  const handleDataFromModal = (data) => {
-    setDataFromModal(data);
-    // Do something with the received data in App component
-  };
+
   return (
     <>
     <HomeRoute 
       sendDataToApp={handleDataFromHomeRoute} 
       sendObjToApp={handleObjFromHomeRoute}
-      dataFromModal={dataFromModal}
-      // favClickInModal={handleFavClickInModal}
+      favListArray={favList}
+      favListFunction={updateFavList}
+
       />
     <PhotoDetailsModal 
       dataFromApp={receivedData}
       objFromApp={receivedObj} 
       resetData={resetDataFromApp}
-      onDataFromModal={handleDataFromModal}
+      favListArray={favList}
+      favListFunction={updateFavList}
       />
       
     </>
