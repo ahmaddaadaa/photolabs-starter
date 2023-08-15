@@ -1,6 +1,6 @@
 ## Updated version:
 ***
-!["app functionality"](https://github.com/ahmaddaadaa/photolabs-starter/blob/master/docs/display.png?raw=true)
+!["app functionality"](https://github.com/ahmaddaadaa/photolabs-starter/blob/master/docs/display.gif?raw=true)
 ***
 
 # react-photolabs
