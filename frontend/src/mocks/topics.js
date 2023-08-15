@@ -17,13 +17,18 @@ const topics = [
   {
     "id": "4",
     "slug": "topic-4",
-    "title": "Fashion"
-  },  
-  {
-    "id": "5",
-    "slug": "topic-5",
-    "title": "Animals"
-  }
+    "title": "Food & Drink"
+  } 
+  // {
+  //   "id": "4",
+  //   "slug": "topic-4",
+  //   "title": "Fashion"
+  // }  
+  // {
+  //   "id": "5",
+  //   "slug": "topic-5",
+  //   "title": "Animals"
+  // }
 ];
 
 export default topics;
