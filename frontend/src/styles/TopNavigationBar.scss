@@ -9,6 +9,7 @@
   -moz-box-shadow: 0 4px 6px -6px #222;
   box-shadow: 0 4px 6px -6px #222;
   height: 72px;
+  background-color: #FFFFFF;
 }
 
 .top-nav-bar__logo {
@@ -20,6 +21,25 @@
   margin-left: 24px;
 }
 
-.heart{
-  padding-right: 5vw;
+
+.heart:not(.custom-styling){
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 1.5vw;
+  padding-top: 0.1vw;
+  padding-left: 1vw;
+  // background-color: yellow;
+  // height: 45px;
+  // width: 30px;
+  // border-radius: 50%;
+  
+  
+}
+.side-bar{
+  display:flex;
+  .topic{
+    margin-top: 12px;
+  }
+  
 }

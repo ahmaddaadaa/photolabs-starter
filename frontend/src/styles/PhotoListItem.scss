@@ -1,14 +1,93 @@
-.photo-list__item {
-  margin: 24px;
-  padding: 8px;
+.custom-styling {
+
+  border: 1px solid lightgray;
+  padding: 0px 5px 8px 0px;
+  margin: 8px;
+  width: 325px;
+  border-radius: 8px;
+
+
+
+  .photo-list__image {
+    user-select: none;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+
+  }
+
+  .FavButton {
+    position: relative;
+    top: 1.5em;
+    left: 1em;
+
+
+
+  }
+
+
+  .photo-list__user-profile {
+    object-fit: cover;
+    border-radius: 100%;
+    vertical-align: middle;
+    margin-right: 8px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .photo-list__user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+  }
+
+  .photo-list__user-info {
+    margin-top: 5px;
+    font-weight: 700;
+    font-size: 12px;
+    margin-left: 8px;
+  }
+
+  .photo-list__user-location {
+    color: #838383;
+  }
+
+  .photo-list__bottomLine {
+    display: flex;
+
+  }
+
+
+}
+
+
+
+
+.photo-list__item:not(.custom-styling) {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  margin-top: 24px;
+  margin-left: 12vw;
+  // padding: 8px;
   border-width: 0.5px;
   border-color: lightgray;
   border-style: solid;
   border-radius: 8px;
   max-width: fit-content;
+  //width: 900px;
+  height: 700px;
+  background-color: #FFFFFF;
+
 }
 
-.photo-list__image {
+.FavButton:not(.custom-styling) {
+  padding-left: 16px;
+  padding-top: 16px;
+}
+
+.photo-list__image :not(.custom-styling) {
   user-select: none;
   width: 300px;
   height: 200px;
@@ -17,9 +96,10 @@
 
 .photo-list__image {
   border-radius: 8px 8px 0px 0px;
+  margin: 0px 16px 16px 16px;
   user-select: none;
-  width: 300px;
-  height: 200px;
+  width: 868px;
+  height: 600px;
   object-fit: cover;
 }
 
@@ -28,14 +108,19 @@
   border-radius: 100%;
   vertical-align: middle;
   margin-right: 8px;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
+}
+
+.profile {
+  margin-left: 16px;
 }
 
 .photo-list__user-details {
   display: flex;
   flex-direction: column;
   align-items: baseline;
+  margin-top: 4px;
 }
 
 .photo-list__user-info {
@@ -49,7 +134,7 @@
   color: #838383;
 }
 
-.photo-list__bottomLine{
+.photo-list__bottomLine {
   display: flex;
 
 }
