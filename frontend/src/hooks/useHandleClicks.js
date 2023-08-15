@@ -1,14 +1,14 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
-const useHandleClicks = () => {
-  const [favList, updateFavList] = useState({});
+// const useHandleClicks = () => {
+//   const [favList, updateFavList] = useState({});
 
-  const handleClicks = function(id) {
-    console.log(id);
-    updateFavList({...favList, [id]: !favList[id]});
-  };
+//   const handleClicks = function(id) {
+//     console.log(id);
+//     updateFavList({...favList, [id]: !favList[id]});
+//   };
 
-  return { favList, handleClicks };
-};
+//   return { favList, handleClicks };
+// };
 
-export default useHandleClicks;
+// export default useHandleClicks;
