@@ -5,7 +5,6 @@ import "../styles/PhotoList.scss";
 import FavButton from "./FavButton";
 
 const PhotoListItem = (props) => {
-  const { id, location, urls, user } = props.data;
   const [popUpwindowStatus, setpopUpwindowStatus] = useState(true);
 
   const handleImageClicks = function () {
@@ -15,33 +14,40 @@ const PhotoListItem = (props) => {
   };
 
   const handleFavClick = () => {
-    props.favListFunction(id);
+    props.favListFunction(props.data.id);
   };
 
   return (
-    <div className={`photo-list__item ${props.differentPage ? "custom-styling" : ""}`}>
+    <div
+      className={`photo-list__item ${
+        props.differentPage ? "custom-styling" : ""
+      }`}
+    >
       <span className="FavButton">
         <FavButton
-          selected={props.favListArray.includes(id)}
+          selected={props.favListArray.includes(props.data.id)}
           onClick={handleFavClick}
         />
       </span>
 
       <img
         className="photo-list__image"
-        src={urls.regular}
+        src={props.data.urls.regular}
         onClick={handleImageClicks}
       />
 
       <div className="photo-list__bottomLine">
         <div className="profile">
-          <img className="photo-list__user-profile" src={user.profile} />
+          <img
+            className="photo-list__user-profile"
+            src={props.data.user.profile}
+          />
         </div>
         <div className="photo-list__user-details">
-          <span className="photo-list__user-info">{user.name}</span>
+          <span className="photo-list__user-info">{props.data.user.name}</span>
           <div className="photo-list__user-location">
-            <span>{location.city} </span>
-            <span>{location.country}</span>
+            <span>{props.data.location.city} </span>
+            <span>{props.data.location.country}</span>
           </div>
         </div>
       </div>
