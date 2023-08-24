@@ -2,10 +2,13 @@ import React from "react";
 import "../styles/TopicListItem.scss";
 
 const TopicListItem = (props) => {
-  const title = props.title;
+  console.log("props inside TopicList Item", props);
+
   return (
     <div className="topic-list__item">
-      <span>{title}</span>
+      <span onClick={() => props.handleTopicClick(props.id)}>
+        {props.title}
+      </span>
     </div>
   );
 };
