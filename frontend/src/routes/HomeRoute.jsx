@@ -5,6 +5,7 @@ import PhotoList from 'components/PhotoList';
 
 
 
+
 const HomeRoute = (props) => {
 
   const handleDataFromPhotoList = (data) => {
@@ -12,17 +13,21 @@ const HomeRoute = (props) => {
   };
 
   const handleObjFromPhotoList = (data) => {
+    console.log("");
     props.sendObjToApp(data);
   };
-
   
   return (
     <>
       <div>
-        <TopNavigationBar isFavPhotoExist={props.favListArray.length > 0} />
+        <TopNavigationBar 
+        handleTopicClick={props.handleTopicClick}
+        topicListData={props.topicListData}
+        isFavPhotoExist={props.favListArray.length > 0} />
         <div className="home-route">
           <div className="photo-list">
             <PhotoList
+              photoData={props.photoData}
               favListArray={props.favListArray}
               favListFunction={props.favListFunction}
               sendDataToHomeRoute={handleDataFromPhotoList}
